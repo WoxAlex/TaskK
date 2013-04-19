@@ -154,7 +154,6 @@ std::shared_ptr<ICell> ICell::CellFactureMethod(const std::string & str)
         out = out->ComputeResult(0);
     return out;
 }
-
 CellTypes ICell::GetCellType(const std::string &str)
 {
     if (str.length() == 0)
