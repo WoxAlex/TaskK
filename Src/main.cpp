@@ -2,7 +2,7 @@
 #include "tablewriter.h"
 #include "simpletablecomputer.h"
 #include "simplecellstorage.h"
-#include "simpleformulacomputer.h"
+#include "optimizedtablecomputer.h"
 #include <iostream>
 
 int main(int , char **)
@@ -14,7 +14,7 @@ try
     tableReader.ReadTable(table);
     std::cout << std::endl;
     
-    SimpleTableComputer tableComputer;
+    OptimizedTableComputer tableComputer(100, 1000);
     tableComputer.ComputeTable(table);
     
     TableWriter::PrintTable(table);

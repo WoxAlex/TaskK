@@ -15,11 +15,12 @@
 class OptimizedTableComputer: public virtual ITableComputer
 {
 public:
-    OptimizedTableComputer(float max_recursive_level);
+    OptimizedTableComputer(float max_recursive_level, size_t max_stack_size);
     virtual ~OptimizedTableComputer();
     virtual void ComputeTable (ICellStorage& table);
 protected:
     int max_recursive_level;
+    size_t max_stack_size;
 };
 
 #endif /* defined(__TaskKMac__optimizedtablecomputer__) */

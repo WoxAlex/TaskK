@@ -13,7 +13,7 @@ SimpleFormulaComputer::SimpleFormulaComputer(ICellStorage& table, int max_depth)
 
 std::shared_ptr<ICell> SimpleFormulaComputer::CompMe(FormulaCell &f, int recurdive_depth)
 {
-    if (recurdive_depth > this->depth)
+    if (recurdive_depth >= this->depth)
         throw MaxRecurciveDepthException();
     // if cell : "="
     if((f.arguments.size()  == f.operators.size())  && (f.arguments.size() == 0))
