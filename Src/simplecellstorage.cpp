@@ -25,6 +25,16 @@ void SimpleCellStorage::CreateTable(int w, int h)
 
 }
 
+int SimpleCellStorage::GetHeight()
+{
+    return this->height;
+}
+
+int SimpleCellStorage::GetWidth()
+{
+    return this->width;
+}
+
 std::shared_ptr<ICell> SimpleCellStorage::GetCell(int x, int y) const
 {
     //std::cout << x << y << width << height << std::endl;
