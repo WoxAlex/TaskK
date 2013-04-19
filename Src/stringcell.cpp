@@ -38,7 +38,7 @@ std::shared_ptr<ICell> StringCell::ComputeResult(int)
 
 std::shared_ptr<ICell> StringCell::operator +(const std::shared_ptr<ICell> &in) const
 {
-    if(dynamic_cast<StringCell*>(&*in) != NULL)
+    if(dynamic_cast<StringCell*>(in.get()) != NULL)
     {
         return this->operator +(dynamic_cast<const StringCell&>(*in));
     }

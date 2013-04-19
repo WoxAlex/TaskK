@@ -95,20 +95,36 @@ BinaryData &operator <<(BinaryData &data, ICell &cell)
     return data;
 }
 
-std::shared_ptr<ICell> ICell::operator +(const std::shared_ptr<ICell> &) const
+std::shared_ptr<ICell> ICell::operator +(const std::shared_ptr<ICell> & cell) const
 {
+    if(dynamic_cast<ErrorCell*>(cell.get()) != NULL)
+    {
+        return cell;
+    }
     return std::shared_ptr<ICell>(new ErrorCell("Error operator"));
 }
-std::shared_ptr<ICell> ICell::operator -(const std::shared_ptr<ICell> &) const
+std::shared_ptr<ICell> ICell::operator -(const std::shared_ptr<ICell> &cell) const
 {
+    if(dynamic_cast<ErrorCell*>(cell.get()) != NULL)
+    {
+        return cell;
+    }
     return std::shared_ptr<ICell>(new ErrorCell("Error operator"));
 }
-std::shared_ptr<ICell> ICell::operator *(const std::shared_ptr<ICell> &) const
+std::shared_ptr<ICell> ICell::operator *(const std::shared_ptr<ICell> &cell) const
 {
+    if(dynamic_cast<ErrorCell*>(cell.get()) != NULL)
+    {
+        return cell;
+    }
     return std::shared_ptr<ICell>(new ErrorCell("Error operator"));
 }
-std::shared_ptr<ICell> ICell::operator /(const std::shared_ptr<ICell>& ) const
+std::shared_ptr<ICell> ICell::operator /(const std::shared_ptr<ICell>& cell) const
 {
+    if(dynamic_cast<ErrorCell*>(cell.get()) != NULL)
+    {
+        return cell;
+    }
     return std::shared_ptr<ICell>(new ErrorCell("Error operator"));
 }
 

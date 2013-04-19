@@ -48,7 +48,19 @@ std::shared_ptr<ICell> ErrorCell::ComputeResult(int)
     return std::shared_ptr<ErrorCell>(new ErrorCell(*this));
 }
 
-std::shared_ptr<ICell> ErrorCell::operator +(const std::shared_ptr<ICell> &) const
+std::shared_ptr<ICell> ErrorCell::operator +(const std::shared_ptr<ICell>& ) const
 {
-    return std::shared_ptr<ICell>(new ErrorCell(*this));
+    return std::shared_ptr<ErrorCell>(new ErrorCell(*this));
+}
+std::shared_ptr<ICell> ErrorCell::operator -(const std::shared_ptr<ICell>& ) const
+{
+    return std::shared_ptr<ErrorCell>(new ErrorCell(*this));
+}
+std::shared_ptr<ICell> ErrorCell::operator *(const std::shared_ptr<ICell>& ) const
+{
+    return std::shared_ptr<ErrorCell>(new ErrorCell(*this));
+}
+std::shared_ptr<ICell> ErrorCell::operator /(const std::shared_ptr<ICell>& ) const
+{
+    return std::shared_ptr<ErrorCell>(new ErrorCell(*this));
 }

@@ -59,7 +59,7 @@ std::shared_ptr<ICell> IntCell::ComputeResult(int)
 
 std::shared_ptr<ICell> IntCell::operator +(const std::shared_ptr<ICell> &in) const
 {
-    if(dynamic_cast<IntCell*>(&*in) != NULL)
+    if(dynamic_cast<IntCell*>(in.get()) != NULL)
     {
         return this->operator +(dynamic_cast<const IntCell&>(*in));
     }
@@ -79,7 +79,7 @@ std::shared_ptr<ICell> IntCell::operator +(const IntCell &in) const
 
 std::shared_ptr<ICell> IntCell::operator -(const std::shared_ptr<ICell> & in) const
 {
-    if(dynamic_cast<IntCell*>(&*in) != NULL)
+    if(dynamic_cast<IntCell*>(in.get()) != NULL)
     {
         return this->operator -(dynamic_cast<const IntCell&>(*in));
     }
@@ -99,7 +99,7 @@ std::shared_ptr<ICell> IntCell::operator -(const IntCell &in) const
 
 std::shared_ptr<ICell> IntCell::operator *(const std::shared_ptr<ICell> & in) const
 {
-    if(dynamic_cast<IntCell*>(&*in) != NULL)
+    if(dynamic_cast<IntCell*>(in.get()) != NULL)
     {
         return this->operator *(dynamic_cast<const IntCell&>(*in));
     }
@@ -119,7 +119,7 @@ std::shared_ptr<ICell> IntCell::operator *(const IntCell &in) const
 
 std::shared_ptr<ICell> IntCell::operator /(const std::shared_ptr<ICell> & in) const
 {
-    if(dynamic_cast<IntCell*>(&*in) != NULL)
+    if(dynamic_cast<IntCell*>(in.get()) != NULL)
     {
         return this->operator /(dynamic_cast<const IntCell&>(*in));
     }
