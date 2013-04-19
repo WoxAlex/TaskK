@@ -150,6 +150,8 @@ std::shared_ptr<ICell> ICell::CellFactureMethod(const std::string & str)
         default: throw std::logic_error("Unknown cell type");
     }
     out->LoadFromString(str);
+    if(out->getAccessType() == Computed)
+        out = out->ComputeResult(0);
     return out;
 }
 
@@ -163,7 +165,9 @@ CellTypes ICell::GetCellType(const std::string &str)
         return String;
     if (('0' <= str[0]) && (str[0] <='9'))
         return Int;
-    return CellIdx;
+    if ((('A' <= str[0]) && (str[0] <='Z')) ||(('a' <= str[0]) && (str[0] <='z')))
+        return CellIdx;
+    return Error;
 }
 
 std::shared_ptr<ICell> ICell::CellFactureMethod(const CellTypes &id)

@@ -42,7 +42,7 @@ void IntCell::LoadFromString(const std::string &str)
         //this->SetResultPtr(std::shared_ptr<ErrorCell>( new ErrorCell("Can't convert to uint")));
         //std::cout << "Ok" << std::endl;
         error = true;
-        this->setCellAccess(NotComputed);
+        this->setCellAccess(Computed);
     }
 }
 
