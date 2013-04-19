@@ -2,6 +2,33 @@
 #define INTCELL_H
 
 #include "icell.h"
+#include <limits>
+
+template <class TYPE>
+bool overflowAdd(TYPE a,TYPE b)
+{
+
+    return ((a!=0)
+            &&(b!=0)
+            &&((a > 0) == (b > 0))
+            && ((llabs(a) > (std::numeric_limits<TYPE>::max() - llabs(b)))));
+}
+
+template <class TYPE>
+bool overflowSub(TYPE a,TYPE b)
+{
+    return overflowAdd<TYPE>(a,-1*b);
+}
+
+template <class TYPE>
+bool overflowMul(TYPE a,TYPE b)
+{
+    if ( b  == 0 )
+        return false;
+    else
+        return llabs(a) > std::numeric_limits<TYPE>::max()/llabs(b);
+}
+
 class IntCell:
         public ICell
 {

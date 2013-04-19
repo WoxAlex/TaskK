@@ -11,6 +11,7 @@ ErrorCell::ErrorCell(const std::string &error_str)
     :error(error_str)
 {
     this->setCellType(Error);
+    this->setCellAccess(Computed);
 }
 
 ErrorCell::~ErrorCell()

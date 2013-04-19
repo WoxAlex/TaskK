@@ -3,7 +3,10 @@
 #include <stdlib.h>
 #include <sstream>
 
+
 #include <iostream>
+
+
 IntCell::IntCell()
     :val(0),
       error(false)
@@ -33,12 +36,13 @@ void IntCell::LoadFromString(const std::string &str)
     std::istringstream iss(str);
     //iss >> std::ws >> this->val >> std::ws; if ' 999 ' is corect
     iss >> this->val;
-    //std::cout << this->val << std::endl;
-    if(!iss.eof() || this->val < 0)
+
+    if(!iss.eof() || (this->val < 0) || (this->val == std::numeric_limits<long long int>::max()) )
     {
         //this->SetResultPtr(std::shared_ptr<ErrorCell>( new ErrorCell("Can't convert to uint")));
+        //std::cout << "Ok" << std::endl;
         error = true;
-        this->setCellAccess(Computed);
+        this->setCellAccess(NotComputed);
     }
 }
 
@@ -68,10 +72,15 @@ std::shared_ptr<ICell> IntCell::operator +(const ICell &in) const
 
 }
 
+
 std::shared_ptr<ICell> IntCell::operator +(const IntCell &in) const
 {
     std::shared_ptr<IntCell> out = std::shared_ptr<IntCell>(new IntCell());
     out->setCellAccess(Computed);
+
+
+    if  (overflowAdd(this->val, in.val))
+        return std::shared_ptr<ErrorCell>(new ErrorCell("Add overflow"));
     out->val = this->val + in.val;
     //todo:add overflow detect and return ErrorCell
     return out;
@@ -92,11 +101,12 @@ std::shared_ptr<ICell> IntCell::operator -(const IntCell &in) const
 {
     std::shared_ptr<IntCell> out = std::shared_ptr<IntCell>(new IntCell());
     out->setCellAccess(Computed);
+    if  (overflowSub(this->val, in.val))
+        return std::shared_ptr<ErrorCell>(new ErrorCell("Sub overflow"));
     out->val = this->val - in.val;
     //todo:add overflow detect and return ErrorCell
     return out;
 }
-
 std::shared_ptr<ICell> IntCell::operator *(const ICell & in) const
 {
     if(dynamic_cast<const IntCell*>(&in) != NULL)
@@ -112,6 +122,8 @@ std::shared_ptr<ICell> IntCell::operator *(const IntCell &in) const
 {
     std::shared_ptr<IntCell> out = std::shared_ptr<IntCell>(new IntCell());
     out->setCellAccess(Computed);
+    if  (overflowMul(this->val, in.val))
+        return std::shared_ptr<ErrorCell>(new ErrorCell("Mul overflow"));
     out->val = this->val * in.val;
     //todo:add overflow detect and return ErrorCell
     return out;
