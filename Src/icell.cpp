@@ -9,7 +9,7 @@
 #include <stdexcept>
 #include <utility>
 
-std::shared_ptr<IComputer> ICell::formulacomputer = std::shared_ptr<IComputer>(NULL);
+std::shared_ptr<IFormulaComputer> ICell::formulacomputer = std::shared_ptr<IFormulaComputer>(NULL);
 
 ICell::ICell()
       :celltype(NullCell),
@@ -166,7 +166,7 @@ std::shared_ptr<ICell> ICell::CellFactureMethod(const CellTypes &id)
 
 }
 
-void ICell::SetFormulaComputer(std::shared_ptr<IComputer> &comp)
+void ICell::SetFormulaComputer(std::shared_ptr<IFormulaComputer> &comp)
 {
     ICell::formulacomputer = comp;
 }

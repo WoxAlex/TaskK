@@ -4,6 +4,10 @@ ICellStorage::ICellStorage()
 {
 }
 
+ICellStorage::~ICellStorage()
+{
+}
+
 
 const char *MaxMemoryException::what()
 {

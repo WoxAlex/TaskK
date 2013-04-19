@@ -9,8 +9,8 @@ class SimpleCellStorage:
 public:
     SimpleCellStorage();
     void CreateTable(int w, int h);
-    int GetHeight();
-    int GetWidth();
+    int GetHeight() const;
+    int GetWidth() const;
 
     std::shared_ptr<ICell> GetCell(int x, int y) const;
     std::shared_ptr<ICell> GetCell(const std::string& Name, int& x, int& y) const;

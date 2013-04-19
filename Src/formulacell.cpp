@@ -24,7 +24,7 @@ inline bool notspace(char c){
     return !space(c);
 }
 
-FormulaCell::FormulaCell(std::shared_ptr<IComputer> comp)
+FormulaCell::FormulaCell(std::shared_ptr<IFormulaComputer> comp)
     :computer(comp)
 {
     this->setCellType(Formula);

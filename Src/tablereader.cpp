@@ -1,7 +1,7 @@
 #include "tablereader.h"
 
 #include "simplecellstorage.h"
-#include "simplecomputer.h"
+#include "simpleformulacomputer.h"
 
 #include "intcell.h"
 #include "formulacell.h"
@@ -10,13 +10,7 @@
 #include <algorithm>
 
 TableReader::TableReader()
-    :width(0),
-      height(0),
-      storage(new SimpleCellStorage())
-
 {
-    std::shared_ptr<IComputer> f_comp = std::shared_ptr<SimpleComputer>(new SimpleComputer(storage));
-    ICell::SetFormulaComputer(f_comp);
 }
 
 void split(const std::string &s, std::vector<std::string>& elems) {
@@ -45,25 +39,26 @@ void split(const std::string &s, std::vector<std::string>& elems) {
     }
 }
 
-void TableReader::ReadTable()
+void TableReader::ReadTable(ICellStorage& table)
 {
     int buffer_size = 1024*1024*10;
     char* buffer = new char[buffer_size];
     std::cin.getline(buffer, buffer_size);//>> this->width >> this->height;
 
     std::istringstream iss(buffer);
-    iss >> std::ws >> this->height >> std::ws;
+    int width, height;
+    iss >> std::ws >> height >> std::ws;
     if(iss.eof())
     {
         throw std::logic_error("Error input table size");
     }
-    iss >> this->width  >> std::ws;
+    iss >> width  >> std::ws;
     if(!iss.eof())
     {
         throw std::logic_error("Error input table size");
     }
 
-    storage->CreateTable(this->width,  this->height);
+    table.CreateTable(width,  height);
     for(int y = 0; y<height; ++y)
     {
         std::cin.getline(buffer, buffer_size);
@@ -85,26 +80,10 @@ void TableReader::ReadTable()
 
         for(size_t x = 0; x<elems.size(); ++x)
         {
-            storage->SetCell((int)x,y,ICell::CellFactureMethod(elems[x]));
+            table.SetCell((int)x,y,ICell::CellFactureMethod(elems[x]));
         }
     }
     delete[] buffer;
-}
-
-void TableReader::ComputeTable()
-{
-    for(int x = 0; x<width; ++x)
-        for(int y = 0; y<height; ++y)
-        {
-            storage->SetCell(x,y,storage->GetCell(x,y)->ComputeResult(0));
-        }
-
-    //catch MaxRecurciveDepth MaxMemory
-}
-
-std::shared_ptr<ICellStorage> TableReader::GetTable()
-{
-    return this->storage;
 }
 
 TableReader::~TableReader()

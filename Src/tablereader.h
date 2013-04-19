@@ -9,16 +9,10 @@ class TableReader
 {
 public:
     TableReader();
-    virtual void ReadTable();
-    virtual void ComputeTable();
-    virtual std::shared_ptr<ICellStorage> GetTable();
-
+    virtual void ReadTable(ICellStorage& table);
     virtual ~TableReader();
-    int width;
-    int height;
 private:
 
-    std::shared_ptr<ICellStorage> storage;
 
 
 };

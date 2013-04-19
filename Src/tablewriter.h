@@ -7,7 +7,7 @@ class TableWriter
 {
 public:
     TableWriter();
-    static void PrintTable(int width, int height, const std::shared_ptr<ICellStorage> &storage);
+    static void PrintTable(const ICellStorage &table);
 
 
 };
