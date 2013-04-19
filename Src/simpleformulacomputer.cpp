@@ -18,7 +18,7 @@ std::shared_ptr<ICell> SimpleFormulaComputer::CompMe(FormulaCell &f, int recurdi
     // if cell : "="
     if((f.arguments.size()  == f.operators.size())  && (f.arguments.size() == 0))
     {
-        return std::shared_ptr<EmptyCell>(new EmptyCell());
+        return std::shared_ptr<ErrorCell>(new ErrorCell("Incorrect argument"));
     }
 
     if(f.arguments.size()  != (f.operators.size() +1))
