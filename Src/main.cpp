@@ -20,7 +20,7 @@ try
     tableComputer.ComputeTable(table);
     
     TableWriter::PrintTable(table);
-    if(table.GetWidth()>0 && table.GetWidth() > 0)
+    if((table.GetWidth()>0) && (table.GetHeight() > 0))
         std::cout << std::endl;
     //if( > 0)
     //    throw std::logic_error("Error table size");
