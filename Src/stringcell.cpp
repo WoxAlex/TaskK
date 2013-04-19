@@ -36,31 +36,13 @@ std::shared_ptr<ICell> StringCell::ComputeResult(int)
     return std::shared_ptr<StringCell>(new StringCell(*this));
 }
 
-<<<<<<< HEAD
-std::shared_ptr<ICell> StringCell::operator +(const ICell &in) const
-{
-    if(dynamic_cast<const StringCell*>(&in) != NULL)
-    {
-        return this->operator +(dynamic_cast<const StringCell&>(in));
-    }
-=======
-//std::shared_ptr<ICell> StringCell::operator +(const std::shared_ptr<ICell> &in) const
+//std::shared_ptr<ICell> StringCell::operator +(const ICell &in) const
 //{
-//    if(dynamic_cast<StringCell*>(&*in) != NULL)
+//    if(dynamic_cast<const StringCell*>(&in) != NULL)
 //    {
-//        return this->operator +(dynamic_cast<const StringCell&>(*in));
+//        return this->operator +(dynamic_cast<const StringCell&>(in));
 //    }
-//
-//    return this->ICell::operator +(in);
-//
-////    std::shared_ptr<StringCell> out = std::shared_ptr<StringCell>();
-//////    out.setCellAccess(Computed);
-//////    out.data = this->data + dynamic_cast<const StringCell& >(in).data + "++";
-////    std::cout << " string" << out->data << std::endl;
-////    return out;
 //}
->>>>>>> Put formula computer into tablecomputer
-
 //std::shared_ptr<ICell> StringCell::operator +(const StringCell& in) const
 //{
 //
