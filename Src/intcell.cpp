@@ -21,14 +21,16 @@ IntCell::~IntCell()
 
 BinaryData IntCell::Serilize()
 {
-    BinaryData out(sizeof(long long int));
-    *(long long int* )(out.data) =  this->val;
+    BinaryData out(sizeof(long long int)+sizeof(bool));
+    *(bool* )(out.data) = this->error;
+    *(long long int* )(out.data + +sizeof(bool)) =  this->val;
     return out;
 }
 
 void IntCell::DeSerilize(BinaryData &data)
 {
-    this->val = *(long long int* )data.data;
+    this->error =  *(bool* )(data.data);
+    this->val = *(long long int* )(data.data + +sizeof(bool));
 }
 
 void IntCell::LoadFromString(const std::string &str, bool trow_ex)
