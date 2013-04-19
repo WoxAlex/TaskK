@@ -33,6 +33,7 @@ void IntCell::LoadFromString(const std::string &str)
     std::istringstream iss(str);
     //iss >> std::ws >> this->val >> std::ws; if ' 999 ' is corect
     iss >> this->val;
+    //std::cout << this->val << std::endl;
     if(!iss.eof() || this->val < 0)
     {
         //this->SetResultPtr(std::shared_ptr<ErrorCell>( new ErrorCell("Can't convert to uint")));

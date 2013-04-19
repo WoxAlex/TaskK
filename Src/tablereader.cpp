@@ -70,7 +70,15 @@ void TableReader::ReadTable()
 
         std::vector< std::string > elems;
 
-        split(buffer,elems);
+        std::string line_val = std::string(buffer);
+
+        if(line_val[line_val.length()-1]  == 13)
+        {
+            line_val = line_val.substr(0,line_val.length()-1);
+        }
+
+
+        split(line_val,elems);
 
         if(static_cast<int>(elems.size()) != width)
             throw std::logic_error("Error read table row");
