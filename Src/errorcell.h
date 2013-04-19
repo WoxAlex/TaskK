@@ -29,19 +29,16 @@ public:
      @param BinaryData& binary data to load from
      */
     virtual void DeSerilize(BinaryData& data);
-<<<<<<< HEAD
-    virtual void LoadFromString(const std::string& str, bool trow_ex);
-=======
     /**
      Load current cell from string data
      @param str string to initialize current cell
+     @param trow_ex tell whether exception should be thrown if load from string was unseccessful
      */
-    virtual void LoadFromString(const std::string& str);
+    virtual void LoadFromString(const std::string& str, bool trow_ex);
     /**
      print current cell to string format
      @returns string format of current cell printing
      */
->>>>>>> Comments
     virtual std::string PrintToString() const;
     /**
      compute current cell and return resulting cell that was computed from current cell

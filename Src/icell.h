@@ -43,19 +43,16 @@ public:
          @param BinaryData& binary data to load from
      */
     virtual void DeSerilize(BinaryData& data) = 0;
-<<<<<<< HEAD
-    virtual void LoadFromString(const std::string& str, bool trow_ex) = 0;
-=======
     /**
          Load current cell from string data
          @param str string to initialize current cell
+         @param trow_ex tell whether exception should be thrown if load from string was unseccessful
      */
-    virtual void LoadFromString(const std::string& str) = 0;
+    virtual void LoadFromString(const std::string& str, bool trow_ex) = 0;
     /**
          print current cell to string format
          @returns string format of current cell printing
      */
->>>>>>> Comments
     virtual std::string PrintToString() const = 0;
     /**
          compute current cell and return resulting cell that was computed from current cell
@@ -129,21 +126,18 @@ public:
     	@returns cell type of decribed cell
      */
     static CellTypes GetCellType(const std::string& str);
-<<<<<<< HEAD
-    static std::shared_ptr<ICell> CellFactureMethod(const std::string& str, bool throw_ex);
-=======
     /**
     	Generate cell object from string
     	@param str string to generate cell from
+        @param trow_ex tell whether exception should be thrown if creation of cell was unseccessful
     	@returns pointer to created cell object
      */
-    static std::shared_ptr<ICell> CellFactureMethod(const std::string& str);
+    static std::shared_ptr<ICell> CellFactureMethod(const std::string& str, bool throw_ex);
     /**
     	Generate cell object of given cell type
     	@param id cell type
     	@returns pointer to created cell object
      */
->>>>>>> Comments
     static std::shared_ptr<ICell> CellFactureMethod(const CellTypes& id);
 
 protected:
