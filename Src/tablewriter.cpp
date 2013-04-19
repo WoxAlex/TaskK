@@ -9,7 +9,7 @@ void TableWriter::PrintTable(const ICellStorage &table)
 
     for(int y = 0; y<table.GetHeight(); ++y)
     {
-        if (y > 0)
+        if (y > 0 && table.GetWidth() > 0)
             std::cout << std::endl;
         for(int x = 0; x<table.GetWidth(); ++x)
         {

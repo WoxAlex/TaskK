@@ -109,16 +109,16 @@ std::shared_ptr<ICell> SimpleFormulaComputer::CompMe(FormulaCell &f, int recurdi
         {
             switch (f.operators[i-1]) {
             case FormulaAdd:
-                out = *out+next;
+                out = *out+*next;
                 break;
             case FormulaSub:
-                out = *out-next;
+                out = *out-*next;
                 break;
             case FormulaMul:
-                out = *out*next;
+                out = *out**next;
                 break;
             case FormulaDiv:
-                out = *out/next;
+                out = *out/ *next;
                 break;
             }
         }

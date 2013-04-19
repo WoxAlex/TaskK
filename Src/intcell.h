@@ -17,16 +17,16 @@ public:
     virtual std::string PrintToString() const;
     virtual std::shared_ptr<ICell> ComputeResult(int recursive_depth);
 
-    std::shared_ptr<ICell> operator +(const std::shared_ptr<ICell>& ) const;
+    std::shared_ptr<ICell> operator +(const ICell& ) const;
     std::shared_ptr<ICell> operator +(const IntCell& ) const;
 
-    std::shared_ptr<ICell> operator -(const std::shared_ptr<ICell>& ) const;
+    std::shared_ptr<ICell> operator -(const ICell& ) const;
     std::shared_ptr<ICell> operator -(const IntCell& ) const;
 
-    std::shared_ptr<ICell> operator *(const std::shared_ptr<ICell>& ) const;
+    std::shared_ptr<ICell> operator *(const ICell& ) const;
     std::shared_ptr<ICell> operator *(const IntCell& ) const;
 
-    std::shared_ptr<ICell> operator /(const std::shared_ptr<ICell>& ) const;
+    std::shared_ptr<ICell> operator /(const ICell& ) const;
     std::shared_ptr<ICell> operator /(const IntCell& ) const;
 protected:
     long long int val;

@@ -4,6 +4,7 @@
 #include "simpleformulacomputer.h"
 
 #include "intcell.h"
+#include "errorcell.h"
 #include "formulacell.h"
 #include <iostream>
 #include <sstream>
@@ -68,18 +69,20 @@ void TableReader::ReadTable(ICellStorage& table)
     std::istringstream issh(elems[0]);
 
     issh >> height;
-    if(!issh.eof() || height <= 0)
+    if(!issh.eof() || height < 0)
         throw std::logic_error("Incorrect table size");
 
     std::istringstream issw(elems[1]);
 
     issw >> width;
-    if(!issw.eof() || width <= 0)
+    if(!issw.eof() || width < 0)
         throw std::logic_error("Incorrect table size");
 
     table.CreateTable(width,  height);
     for(int y = 0; y<height; ++y)
     {
+        if(width == 0)
+            continue;
         std::cin.getline(buffer, buffer_size);
 
         std::vector< std::string > elems;
@@ -99,7 +102,14 @@ void TableReader::ReadTable(ICellStorage& table)
 
         for(size_t x = 0; x<elems.size(); ++x)
         {
+            try{
             table.SetCell((int)x,y,ICell::CellFactureMethod(elems[x]));
+            }
+            catch(std::exception& ex)
+            {
+                table.SetCell((int)x,y,
+                              std::shared_ptr<ErrorCell>(new ErrorCell("Incorrect cell type")));
+            }
         }
     }
     delete[] buffer;

@@ -52,13 +52,13 @@ public:
     friend BinaryData & operator <<(BinaryData &data, ICell & cell);
 
 
-    virtual std::shared_ptr<ICell> operator +(const std::shared_ptr<ICell>& ) const;
+    virtual std::shared_ptr<ICell> operator +(const ICell& ) const;
 
-    virtual std::shared_ptr<ICell> operator -(const std::shared_ptr<ICell>& ) const;
+    virtual std::shared_ptr<ICell> operator -(const ICell& ) const;
 
-    virtual std::shared_ptr<ICell> operator *(const std::shared_ptr<ICell>& ) const;
+    virtual std::shared_ptr<ICell> operator *(const ICell& ) const;
 
-    virtual std::shared_ptr<ICell> operator /(const std::shared_ptr<ICell>& ) const;
+    virtual std::shared_ptr<ICell> operator /(const ICell& ) const;
 
     static void SetFormulaComputer(std::shared_ptr<IFormulaComputer>& comp);
 

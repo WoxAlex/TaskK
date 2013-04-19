@@ -36,11 +36,11 @@ std::shared_ptr<ICell> StringCell::ComputeResult(int)
     return std::shared_ptr<StringCell>(new StringCell(*this));
 }
 
-std::shared_ptr<ICell> StringCell::operator +(const std::shared_ptr<ICell> &in) const
+std::shared_ptr<ICell> StringCell::operator +(const ICell &in) const
 {
-    if(dynamic_cast<StringCell*>(in.get()) != NULL)
+    if(dynamic_cast<const StringCell*>(&in) != NULL)
     {
-        return this->operator +(dynamic_cast<const StringCell&>(*in));
+        return this->operator +(dynamic_cast<const StringCell&>(in));
     }
 
     return this->ICell::operator +(in);

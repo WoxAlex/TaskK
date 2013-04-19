@@ -22,6 +22,8 @@ try
 
     std::cout << std::endl;
 
+    //if( > 0)
+    //    throw std::logic_error("Error table size");
 
 
 //    //Create each cell

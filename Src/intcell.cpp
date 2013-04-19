@@ -57,11 +57,11 @@ std::shared_ptr<ICell> IntCell::ComputeResult(int)
     return std::shared_ptr<IntCell>(new IntCell(*this));
 }
 
-std::shared_ptr<ICell> IntCell::operator +(const std::shared_ptr<ICell> &in) const
+std::shared_ptr<ICell> IntCell::operator +(const ICell &in) const
 {
-    if(dynamic_cast<IntCell*>(in.get()) != NULL)
+    if(dynamic_cast<const IntCell*>(&in) != NULL)
     {
-        return this->operator +(dynamic_cast<const IntCell&>(*in));
+        return this->operator +(dynamic_cast<const IntCell&>(in));
     }
 
     return this->ICell::operator +(in);
@@ -77,11 +77,11 @@ std::shared_ptr<ICell> IntCell::operator +(const IntCell &in) const
     return out;
 }
 
-std::shared_ptr<ICell> IntCell::operator -(const std::shared_ptr<ICell> & in) const
+std::shared_ptr<ICell> IntCell::operator -(const ICell & in) const
 {
-    if(dynamic_cast<IntCell*>(in.get()) != NULL)
+    if(dynamic_cast<const IntCell*>(&in) != NULL)
     {
-        return this->operator -(dynamic_cast<const IntCell&>(*in));
+        return this->operator -(dynamic_cast<const IntCell&>(in));
     }
 
     return this->ICell::operator +(in);
@@ -97,11 +97,11 @@ std::shared_ptr<ICell> IntCell::operator -(const IntCell &in) const
     return out;
 }
 
-std::shared_ptr<ICell> IntCell::operator *(const std::shared_ptr<ICell> & in) const
+std::shared_ptr<ICell> IntCell::operator *(const ICell & in) const
 {
-    if(dynamic_cast<IntCell*>(in.get()) != NULL)
+    if(dynamic_cast<const IntCell*>(&in) != NULL)
     {
-        return this->operator *(dynamic_cast<const IntCell&>(*in));
+        return this->operator *(dynamic_cast<const IntCell&>(in));
     }
 
     return this->ICell::operator +(in);
@@ -117,11 +117,11 @@ std::shared_ptr<ICell> IntCell::operator *(const IntCell &in) const
     return out;
 }
 
-std::shared_ptr<ICell> IntCell::operator /(const std::shared_ptr<ICell> & in) const
+std::shared_ptr<ICell> IntCell::operator /(const ICell & in) const
 {
-    if(dynamic_cast<IntCell*>(in.get()) != NULL)
+    if(dynamic_cast<const IntCell*>(&in) != NULL)
     {
-        return this->operator /(dynamic_cast<const IntCell&>(*in));
+        return this->operator /(dynamic_cast<const IntCell&>(in));
     }
 
     return this->ICell::operator +(in);

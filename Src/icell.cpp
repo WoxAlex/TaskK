@@ -95,37 +95,37 @@ BinaryData &operator <<(BinaryData &data, ICell &cell)
     return data;
 }
 
-std::shared_ptr<ICell> ICell::operator +(const std::shared_ptr<ICell> & cell) const
+std::shared_ptr<ICell> ICell::operator +(const ICell& cell) const
 {
-    if(dynamic_cast<ErrorCell*>(cell.get()) != NULL)
+    if(dynamic_cast<const ErrorCell*>(&cell) != NULL)
     {
-        return cell;
+        return std::shared_ptr<ErrorCell>(new ErrorCell(dynamic_cast<const ErrorCell&>(cell)));
     }
-    return std::shared_ptr<ICell>(new ErrorCell("Error operator"));
+    return std::shared_ptr<ErrorCell>(new ErrorCell("Error operator"));
 }
-std::shared_ptr<ICell> ICell::operator -(const std::shared_ptr<ICell> &cell) const
+std::shared_ptr<ICell> ICell::operator -(const ICell& cell) const
 {
-    if(dynamic_cast<ErrorCell*>(cell.get()) != NULL)
+    if(dynamic_cast<const ErrorCell*>(&cell) != NULL)
     {
-        return cell;
+        return std::shared_ptr<ErrorCell>(new ErrorCell(dynamic_cast<const ErrorCell&>(cell)));
     }
-    return std::shared_ptr<ICell>(new ErrorCell("Error operator"));
+    return std::shared_ptr<ErrorCell>(new ErrorCell("Error operator"));
 }
-std::shared_ptr<ICell> ICell::operator *(const std::shared_ptr<ICell> &cell) const
+std::shared_ptr<ICell> ICell::operator *(const ICell &cell) const
 {
-    if(dynamic_cast<ErrorCell*>(cell.get()) != NULL)
+    if(dynamic_cast<const ErrorCell*>(&cell) != NULL)
     {
-        return cell;
+        return std::shared_ptr<ErrorCell>(new ErrorCell(dynamic_cast<const ErrorCell&>(cell)));
     }
-    return std::shared_ptr<ICell>(new ErrorCell("Error operator"));
+    return std::shared_ptr<ErrorCell>(new ErrorCell("Error operator"));
 }
-std::shared_ptr<ICell> ICell::operator /(const std::shared_ptr<ICell>& cell) const
+std::shared_ptr<ICell> ICell::operator /(const ICell& cell) const
 {
-    if(dynamic_cast<ErrorCell*>(cell.get()) != NULL)
+    if(dynamic_cast<const ErrorCell*>(&cell) != NULL)
     {
-        return cell;
+        return std::shared_ptr<ErrorCell>(new ErrorCell(dynamic_cast<const ErrorCell&>(cell)));
     }
-    return std::shared_ptr<ICell>(new ErrorCell("Error operator"));
+    return std::shared_ptr<ErrorCell>(new ErrorCell("Error operator"));
 }
 
 void ICell::setCellType(const CellTypes &type)
