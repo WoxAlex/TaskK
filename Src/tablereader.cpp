@@ -45,18 +45,37 @@ void TableReader::ReadTable(ICellStorage& table)
     char* buffer = new char[buffer_size];
     std::cin.getline(buffer, buffer_size);//>> this->width >> this->height;
 
-    std::istringstream iss(buffer);
-    int width, height;
-    iss >> std::ws >> height >> std::ws;
-    if(iss.eof())
+    std::vector< std::string > elems;
+
+    std::string line_val = std::string(buffer);
+
+    if(line_val[line_val.length()-1]  == 13)
     {
-        throw std::logic_error("Error input table size");
+        line_val = line_val.substr(0,line_val.length()-1);
     }
-    iss >> width  >> std::ws;
-    if(!iss.eof())
+
+
+    split(line_val,elems);
+
+    if(elems.size() != 2)
     {
-        throw std::logic_error("Error input table size");
+        throw std::logic_error("Incorrect table size");
     }
+
+    int width = -1;
+    int height = -1;
+
+    std::istringstream issh(elems[0]);
+
+    issh >> height;
+    if(!issh.eof() || height <= 0)
+        throw std::logic_error("Incorrect table size");
+
+    std::istringstream issw(elems[1]);
+
+    issw >> width;
+    if(!issw.eof() || width <= 0)
+        throw std::logic_error("Incorrect table size");
 
     table.CreateTable(width,  height);
     for(int y = 0; y<height; ++y)

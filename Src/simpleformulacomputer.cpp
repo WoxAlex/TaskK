@@ -123,6 +123,7 @@ std::shared_ptr<ICell> SimpleFormulaComputer::CompMe(FormulaCell &f, int recurdi
             }
         }
     }
-    out = out->ComputeResult(recurdive_depth+1);
+    if(out->getAccessType() != Computed)
+        out = out->ComputeResult(recurdive_depth+1);
     return out;
 }

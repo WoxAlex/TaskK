@@ -63,7 +63,7 @@ std::shared_ptr<ICell> StringCell::operator +(const StringCell& in) const
 
 std::string StringCell::PrintToString() const
 {
-    return '\'' + this->data;
+    return this->data;
 }
 
 void StringCell::LoadFromString(const std::string &str)
