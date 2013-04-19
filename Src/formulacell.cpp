@@ -75,10 +75,10 @@ void FormulaCell::LoadFromString(const std::string &str)
 BinaryData FormulaCell::Serilize()
 {
     BinaryData out;
-    out << this->operators.size();
+    out << (int)this->operators.size();
     for(size_t i = 0; i < this->operators.size(); ++i)
         out << this->operators[i];
-    out << this->arguments.size();
+    out << (int)this->arguments.size();
     for(size_t i = 0; i < this->arguments.size(); ++i)
         out << this->arguments[i];
     return out;

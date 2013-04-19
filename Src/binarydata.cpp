@@ -142,7 +142,7 @@ BinaryData &operator <<(BinaryData &data, const std::string &val)
     }
     int* ptr_l = (int*)(data.data + data.length -sizeof(int) - val.length());
     char* ptr_d = (char*)(data.data + data.length  - val.length());
-    *ptr_l = val.length();
+    *ptr_l = (int)val.length();
     memcpy(ptr_d,val.data(),val.length());
     return data;
 }
