@@ -11,9 +11,16 @@
 
 #include "icellstorage.h"
 
+/**
+	Interface for methods for computing tables datas
+ */
 class ITableComputer
 {
 public:
+    /**
+    	Compute all tables cells
+    	@param table table to fix
+     */
     virtual void ComputeTable (ICellStorage& table) = 0;
     virtual ~ITableComputer(){}
 };

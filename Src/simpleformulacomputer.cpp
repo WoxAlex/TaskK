@@ -11,6 +11,12 @@ SimpleFormulaComputer::SimpleFormulaComputer(ICellStorage& table, int max_depth)
 {
 }
 
+SimpleFormulaComputer::~SimpleFormulaComputer()
+{
+    
+}
+
+
 std::shared_ptr<ICell> SimpleFormulaComputer::CompMe(FormulaCell &f, int recurdive_depth)
 {
     if (recurdive_depth >= this->depth)

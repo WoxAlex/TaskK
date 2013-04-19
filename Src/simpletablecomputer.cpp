@@ -13,6 +13,11 @@ SimpleTableComputer::SimpleTableComputer ()
 {
     
 }
+
+SimpleTableComputer::~SimpleTableComputer ()
+{
+    
+}
 void SimpleTableComputer::ComputeTable (ICellStorage& table)
 {
     std::shared_ptr<IFormulaComputer> f_comp = std::shared_ptr<SimpleFormulaComputer>(new SimpleFormulaComputer(table));

@@ -12,10 +12,19 @@
 #include <iostream>
 #include "itablecomputer.h"
 
+/**
+ Simple computer that perform computation for all cells one-by-one. Doesn't perform max recursive level control.
+ */
 class SimpleTableComputer : public virtual ITableComputer
 {
 public:
     SimpleTableComputer ();
+    virtual ~SimpleTableComputer ();
+    
+    /**
+    	Compute result of given table
+    	@param table table to compute
+     */
     virtual void ComputeTable (ICellStorage& table);
 };
 

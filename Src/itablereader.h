@@ -2,12 +2,21 @@
 #define ITABLEREADER_H
 
 #include "icellstorage.h"
+
+/**
+	Interface for method for reading table
+ */ 
 class ITableReader
 {
 public:
     ITableReader();
-    virtual void ReadTable(ICellStorage& table) = 0;
     virtual ~ITableReader();
+
+    /**
+    	Read table
+        @param table table object to read table to
+     */
+    virtual void ReadTable(ICellStorage& table) = 0;
 
 };
 

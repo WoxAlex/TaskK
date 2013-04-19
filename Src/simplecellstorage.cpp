@@ -7,6 +7,11 @@ SimpleCellStorage::SimpleCellStorage()
 {
 }
 
+SimpleCellStorage::~SimpleCellStorage()
+{
+    
+}
+
 void SimpleCellStorage::CreateTable(int w, int h)
 {
     //h >0 w > 0
