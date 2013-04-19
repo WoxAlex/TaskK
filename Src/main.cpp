@@ -5,9 +5,11 @@
 #include "optimizedtablecomputer.h"
 #include <iostream>
 
+
 int main(int , char **)
 try
 {
+    
     SimpleCellStorage table;
 
     TableReader tableReader;
