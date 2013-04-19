@@ -86,6 +86,10 @@ std::shared_ptr<ICell> SimpleCellStorage::GetCell(const std::string& Name, int& 
 
     --y;
     --x;
+
+    if(x >= 26 || y >= 9)
+        throw std::logic_error("Error in cell address");
+
     //a == A : y
     //1 : x
     //std::cout << Name << " " <<tmp << " " << x << " " << y << std::endl;

@@ -63,7 +63,7 @@ std::string FormulaCell::PrintToString() const
     throw std::logic_error("Can't print formula");
 }
 
-void FormulaCell::LoadFromString(const std::string &str)
+void FormulaCell::LoadFromString(const std::string &str, bool )
 {
     if(str[0] != '=')
         throw std::invalid_argument("This cell type is not formula");

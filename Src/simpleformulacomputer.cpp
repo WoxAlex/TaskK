@@ -63,7 +63,7 @@ std::shared_ptr<ICell> SimpleFormulaComputer::CompMe(FormulaCell &f, int recurdi
     }else
     if (ICell::GetCellType(f.arguments[0]) == Int)
     {
-        out = ICell::CellFactureMethod(f.arguments[0]);
+        out = ICell::CellFactureMethod(f.arguments[0],false);
 
     }
     else
@@ -106,7 +106,7 @@ std::shared_ptr<ICell> SimpleFormulaComputer::CompMe(FormulaCell &f, int recurdi
             }
         }else if (ICell::GetCellType(f.arguments[i]) == Int)
         {
-            next = ICell::CellFactureMethod(f.arguments[i]);
+            next = ICell::CellFactureMethod(f.arguments[i],false);
         }
         else
         {

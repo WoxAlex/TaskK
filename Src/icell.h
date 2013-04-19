@@ -33,7 +33,7 @@ public:
 
     virtual BinaryData Serilize() = 0;
     virtual void DeSerilize(BinaryData& data) = 0;
-    virtual void LoadFromString(const std::string& str) = 0;
+    virtual void LoadFromString(const std::string& str, bool trow_ex) = 0;
     virtual std::string PrintToString() const = 0;
     //virtual void ComputeResult() = 0; ///Set return sharedPtr<ICell>
     virtual std::shared_ptr<ICell> ComputeResult(int recursive_depth) = 0;
@@ -63,7 +63,7 @@ public:
     static void SetFormulaComputer(std::shared_ptr<IFormulaComputer>& comp);
 
     static CellTypes GetCellType(const std::string& str);
-    static std::shared_ptr<ICell> CellFactureMethod(const std::string& str);
+    static std::shared_ptr<ICell> CellFactureMethod(const std::string& str, bool throw_ex);
     static std::shared_ptr<ICell> CellFactureMethod(const CellTypes& id);
 protected:
     void setCellType(const CellTypes& type);

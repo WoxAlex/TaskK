@@ -14,15 +14,14 @@ try
 
     TableReader tableReader;
     tableReader.ReadTable(table);
-    std::cout << std::endl;
+
     
     OptimizedTableComputer tableComputer(100, 1000);
     tableComputer.ComputeTable(table);
     
     TableWriter::PrintTable(table);
-
-    std::cout << std::endl;
-
+    if(table.GetWidth()>0 && table.GetWidth() > 0)
+        std::cout << std::endl;
     //if( > 0)
     //    throw std::logic_error("Error table size");
 
@@ -91,7 +90,7 @@ try
     return 0;
 } catch (std::exception& e)
 {
-    std::cerr << "Exception what: " << e.what() << std::endl;
+    std::cerr  << e.what() << std::endl;
     return 1;
 }
 

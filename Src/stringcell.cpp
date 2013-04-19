@@ -27,7 +27,7 @@ void StringCell::DeSerilize(BinaryData &data)
     data >> this->data;
 }
 
-std::shared_ptr<ICell> StringCell::ComputeResult(int)
+std::shared_ptr<ICell> StringCell::ComputeResult(int )
 {
     if(this->getAccessType() != Computed)
     {
@@ -57,7 +57,7 @@ std::string StringCell::PrintToString() const
     return this->data;
 }
 
-void StringCell::LoadFromString(const std::string &str)
+void StringCell::LoadFromString(const std::string &str, bool )
 {
     if(str[0] == '\'')
     {

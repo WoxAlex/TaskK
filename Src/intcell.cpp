@@ -31,16 +31,20 @@ void IntCell::DeSerilize(BinaryData &data)
     this->val = *(long long int* )data.data;
 }
 
-void IntCell::LoadFromString(const std::string &str)
+void IntCell::LoadFromString(const std::string &str, bool trow_ex)
 {
     std::istringstream iss(str);
     //iss >> std::ws >> this->val >> std::ws; if ' 999 ' is corect
     iss >> this->val;
 
-    if(!iss.eof() || (this->val < 0) || (this->val == std::numeric_limits<long long int>::max()) )
+    if(!iss.eof() || (this->val < 0)
+            || (this->val == std::numeric_limits<long long int>::max())
+            || (str.length()>1 && str[0]=='0'))
     {
         //this->SetResultPtr(std::shared_ptr<ErrorCell>( new ErrorCell("Can't convert to uint")));
         //std::cout << "Ok" << std::endl;
+        if(trow_ex)
+            throw std::logic_error("Can't parce cell");
         error = true;
         this->setCellAccess(Computed);
     }

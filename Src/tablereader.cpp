@@ -70,7 +70,7 @@ void TableReader::ReadTable(ICellStorage& table)
 
     issh >> height;
     if(!issh.eof() || height < 0 ||
-            (elems[0].length()>0 && ((elems[0][0] <= '0') || (elems[0][0] > '9'))))
+            (elems[0].length()>1 && ((elems[0][0] <= '0') || (elems[0][0] > '9'))))
         throw std::logic_error("Incorrect table size");
 
     std::istringstream issw(elems[1]);
@@ -104,14 +104,14 @@ void TableReader::ReadTable(ICellStorage& table)
 
         for(size_t x = 0; x<elems.size(); ++x)
         {
-            try{
-            table.SetCell((int)x,y,ICell::CellFactureMethod(elems[x]));
-            }
-            catch(std::exception& ex)
-            {
-                table.SetCell((int)x,y,
-                              std::shared_ptr<ErrorCell>(new ErrorCell("Incorrect cell type")));
-            }
+            //try{
+            table.SetCell((int)x,y,ICell::CellFactureMethod(elems[x],true));
+            //}
+            //catch(std::exception& ex)
+            //{
+            //    table.SetCell((int)x,y,
+            //                  std::shared_ptr<ErrorCell>(new ErrorCell("Incorrect cell type")));
+            //}
         }
     }
     delete[] buffer;

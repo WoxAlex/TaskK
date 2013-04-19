@@ -17,7 +17,7 @@ public:
     ~FormulaCell();
     virtual BinaryData Serilize();
     virtual void DeSerilize(BinaryData& data);
-    virtual void LoadFromString(const std::string& str);
+    virtual void LoadFromString(const std::string& str, bool trow_ex);
     virtual std::string PrintToString() const;
     virtual std::shared_ptr<ICell> ComputeResult(int recursive_depth);
 

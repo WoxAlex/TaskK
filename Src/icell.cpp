@@ -138,7 +138,7 @@ void ICell::setCellAccess(const CellAccess &type)
     this->cellaccess = type;
 }
 
-std::shared_ptr<ICell> ICell::CellFactureMethod(const std::string & str)
+std::shared_ptr<ICell> ICell::CellFactureMethod(const std::string & str, bool throw_ex)
 {
     std::shared_ptr<ICell> out;
     switch(ICell::GetCellType(str))
@@ -149,7 +149,7 @@ std::shared_ptr<ICell> ICell::CellFactureMethod(const std::string & str)
         case Empty: out = std::shared_ptr<EmptyCell>(new EmptyCell()); break;
         default: throw std::logic_error("Unknown cell type");
     }
-    out->LoadFromString(str);
+    out->LoadFromString(str,throw_ex);
     if(out->getAccessType() == Computed)
         out = out->ComputeResult(0);
     return out;

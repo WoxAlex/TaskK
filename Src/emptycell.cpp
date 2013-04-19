@@ -21,7 +21,7 @@ void EmptyCell::DeSerilize(BinaryData &)
 
 }
 
-void EmptyCell::LoadFromString(const std::string &str)
+void EmptyCell::LoadFromString(const std::string &str, bool)
 {
     if(str != "")
         throw std::logic_error("Empty cell not empty");

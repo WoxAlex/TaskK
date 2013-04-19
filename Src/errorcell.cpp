@@ -30,7 +30,7 @@ void ErrorCell::DeSerilize(BinaryData &data)
     data >> this->error;
 }
 
-void ErrorCell::LoadFromString(const std::string &)
+void ErrorCell::LoadFromString(const std::string &, bool )
 {
     throw std::logic_error("ErrorCell can't load from string");
 }
