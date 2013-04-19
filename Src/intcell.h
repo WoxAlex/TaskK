@@ -3,6 +3,7 @@
 
 #include "icell.h"
 #include <limits>
+#include <complex>
 
 template <class TYPE>
 bool overflowAdd(TYPE a,TYPE b)
