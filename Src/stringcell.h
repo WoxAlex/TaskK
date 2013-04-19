@@ -17,8 +17,13 @@ public:
     virtual std::string PrintToString() const;
     virtual std::shared_ptr<ICell> ComputeResult(int recursive_depth);
 
+<<<<<<< HEAD
     std::shared_ptr<ICell> operator +(const ICell& ) const;
     std::shared_ptr<ICell> operator +(const StringCell& ) const;
+=======
+    //std::shared_ptr<ICell> operator +(const std::shared_ptr<ICell>& ) const;
+    //std::shared_ptr<ICell> operator +(const StringCell& ) const;
+>>>>>>> Put formula computer into tablecomputer
 
 protected:
     std::string data;

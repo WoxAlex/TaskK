@@ -68,6 +68,7 @@ public:
 protected:
     void setCellType(const CellTypes& type);
     void setCellAccess(const CellAccess& type);
+    static std::shared_ptr<IFormulaComputer> formulacomputer;
 
 private:
 
@@ -78,7 +79,6 @@ private:
     CellTypes celltype;
     CellAccess cellaccess;
 
-    static std::shared_ptr<IFormulaComputer> formulacomputer;
 };
 
 #endif // ICELL_H

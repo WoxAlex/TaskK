@@ -9,12 +9,11 @@ int main(int , char **)
 try
 {
     SimpleCellStorage table;
-    std::shared_ptr<IFormulaComputer> f_comp = std::shared_ptr<SimpleFormulaComputer>(new SimpleFormulaComputer(table));
-    ICell::SetFormulaComputer(f_comp);
 
     TableReader tableReader;
     tableReader.ReadTable(table);
     std::cout << std::endl;
+    
     SimpleTableComputer tableComputer;
     tableComputer.ComputeTable(table);
     

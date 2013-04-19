@@ -11,10 +11,10 @@ public:
     MaxRecurciveDepthException(int x, int y);
     const char* what();
     std::pair<int,int> GetLastPos();
-    bool isSetted();
+    bool isSet();
 private:
     int x,y;
-    bool setted;
+    bool set;
 };
 
 

@@ -13,7 +13,7 @@ class FormulaCell:
         public ICell
 {
 public:
-    FormulaCell(std::shared_ptr<IFormulaComputer> comp);
+    FormulaCell();
     ~FormulaCell();
     virtual BinaryData Serilize();
     virtual void DeSerilize(BinaryData& data);

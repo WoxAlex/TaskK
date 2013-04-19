@@ -56,16 +56,21 @@ std::shared_ptr<ICell> SimpleFormulaComputer::CompMe(FormulaCell &f, int recurdi
         }
         catch(MaxRecurciveDepthException& ex)
         {
-            if(!ex.isSetted())
+            if(!ex.isSet())
                 throw MaxRecurciveDepthException(x,y);
             throw ex;
         }
     }else
+    if (ICell::GetCellType(f.arguments[0]) == Int)
     {
         out = ICell::CellFactureMethod(f.arguments[0]);
 
     }
-
+    else
+    {
+        return std::shared_ptr<ErrorCell>(new ErrorCell("Incorrect formula argument"));
+    }
+    
     for(size_t i = 1; i<f.arguments.size(); ++i)
     {
         if(ICell::GetCellType(f.arguments[i]) == CellIdx)
@@ -95,13 +100,17 @@ std::shared_ptr<ICell> SimpleFormulaComputer::CompMe(FormulaCell &f, int recurdi
             }
             catch(MaxRecurciveDepthException& ex)
             {
-                if(!ex.isSetted())
+                if(!ex.isSet())
                     throw MaxRecurciveDepthException(x,y);
                 throw ex;
             }
-        }else
+        }else if (ICell::GetCellType(f.arguments[i]) == Int)
         {
             next = ICell::CellFactureMethod(f.arguments[i]);
+        }
+        else
+        {
+            return std::shared_ptr<ErrorCell>(new ErrorCell("Incorrect formula argument"));
         }
         if(next->getAccessType() == Computing)
             out = std::shared_ptr<ICell>(new ErrorCell("Cycle in formula"));

@@ -24,8 +24,7 @@ inline bool notspace(char c){
     return !space(c);
 }
 
-FormulaCell::FormulaCell(std::shared_ptr<IFormulaComputer> comp)
-    :computer(comp)
+FormulaCell::FormulaCell()
 {
     this->setCellType(Formula);
     this->setCellAccess(NotComputed);
@@ -44,7 +43,7 @@ std::shared_ptr<ICell> FormulaCell::ComputeResult(int recursive_depth)
     }
     try{
         this->setCellAccess(Computing);
-        std::shared_ptr<ICell> out = this->computer->CompMe(*this, recursive_depth);
+        std::shared_ptr<ICell> out = ICell::formulacomputer->CompMe(*this, recursive_depth);
         this->setCellAccess(Computed);
         return out;
     }catch(MaxMemoryException& ex)

@@ -145,7 +145,7 @@ std::shared_ptr<ICell> ICell::CellFactureMethod(const std::string & str)
     {
         case String: out = std::shared_ptr<StringCell>(new StringCell()); break;
         case Int: out = std::shared_ptr<IntCell>( new IntCell()); break;
-        case Formula: out = std::shared_ptr<FormulaCell> (new FormulaCell(ICell::formulacomputer)); break;
+        case Formula: out = std::shared_ptr<FormulaCell> (new FormulaCell()); break;
         case Empty: out = std::shared_ptr<EmptyCell>(new EmptyCell()); break;
         default: throw std::logic_error("Unknown cell type");
     }
@@ -172,7 +172,7 @@ std::shared_ptr<ICell> ICell::CellFactureMethod(const CellTypes &id)
     {
     case String: return std::shared_ptr<StringCell>(new StringCell());
     case Int: return std::shared_ptr<IntCell>( new IntCell());
-    case Formula: return std::shared_ptr<FormulaCell>( new FormulaCell(ICell::formulacomputer));
+    case Formula: return std::shared_ptr<FormulaCell>( new FormulaCell());
     case Empty: return std::shared_ptr<EmptyCell> (new EmptyCell());
     case NullCell: return std::shared_ptr<ICell> (NULL);
     case Error: return std::shared_ptr<ErrorCell> (new ErrorCell());
