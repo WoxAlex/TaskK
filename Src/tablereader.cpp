@@ -69,13 +69,15 @@ void TableReader::ReadTable(ICellStorage& table)
     std::istringstream issh(elems[0]);
 
     issh >> height;
-    if(!issh.eof() || height < 0)
+    if(!issh.eof() || height < 0 ||
+            (elems[0].length()>0 && ((elems[0][0] <= '0') || (elems[0][0] > '9'))))
         throw std::logic_error("Incorrect table size");
 
     std::istringstream issw(elems[1]);
 
     issw >> width;
-    if(!issw.eof() || width < 0)
+    if(!issw.eof() || width < 0||
+            (elems[1].length()>0 && ((elems[1][0] <= '0') || (elems[1][0] > '9'))))
         throw std::logic_error("Incorrect table size");
 
     table.CreateTable(width,  height);
