@@ -1,15 +1,24 @@
 #include "tablereader.h"
 #include "tablewriter.h"
+#include "simpletablecomputer.h"
+#include "simplecellstorage.h"
+#include "simpleformulacomputer.h"
 #include <iostream>
 
 int main(int , char **)
 try
 {
-    TableReader table;
-    table.ReadTable();
+    SimpleCellStorage table;
+    std::shared_ptr<IFormulaComputer> f_comp = std::shared_ptr<SimpleFormulaComputer>(new SimpleFormulaComputer(table));
+    ICell::SetFormulaComputer(f_comp);
+
+    TableReader tableReader;
+    tableReader.ReadTable(table);
     std::cout << std::endl;
-    table.ComputeTable();
-    TableWriter::PrintTable(table.width, table.height, table.GetTable());
+    SimpleTableComputer tableComputer;
+    tableComputer.ComputeTable(table);
+    
+    TableWriter::PrintTable(table);
 
     std::cout << std::endl;
 

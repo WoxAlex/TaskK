@@ -3,7 +3,7 @@
 
 
 #include "binarydata.h"
-#include "icomputer.h"
+#include "iformulacomputer.h"
 #include <string>
 #include <memory>
 
@@ -60,7 +60,7 @@ public:
 
     virtual std::shared_ptr<ICell> operator /(const std::shared_ptr<ICell>& ) const;
 
-    static void SetFormulaComputer(std::shared_ptr<IComputer>& comp);
+    static void SetFormulaComputer(std::shared_ptr<IFormulaComputer>& comp);
 
     static CellTypes GetCellType(const std::string& str);
     static std::shared_ptr<ICell> CellFactureMethod(const std::string& str);
@@ -78,7 +78,7 @@ private:
     CellTypes celltype;
     CellAccess cellaccess;
 
-    static std::shared_ptr<IComputer> formulacomputer;
+    static std::shared_ptr<IFormulaComputer> formulacomputer;
 };
 
 #endif // ICELL_H

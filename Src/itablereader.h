@@ -6,9 +6,7 @@ class ITableReader
 {
 public:
     ITableReader();
-    virtual void ReadTable() = 0;
-    virtual void ComputeTable() = 0;
-    virtual std::shared_ptr<ICellStorage> GetTable() = 0;
+    virtual void ReadTable(ICellStorage& table) = 0;
     virtual ~ITableReader();
 
 };

@@ -2,7 +2,7 @@
 #define FORMULACELL_H
 
 #include "icell.h"
-#include "icomputer.h"
+#include "iformulacomputer.h"
 
 enum FormulaOperators
 {
@@ -13,7 +13,7 @@ class FormulaCell:
         public ICell
 {
 public:
-    FormulaCell(std::shared_ptr<IComputer> comp);
+    FormulaCell(std::shared_ptr<IFormulaComputer> comp);
     ~FormulaCell();
     virtual BinaryData Serilize();
     virtual void DeSerilize(BinaryData& data);
@@ -25,7 +25,7 @@ public:
     std::vector< std::string > arguments;
 private:
     void split(const std::string &s, std::vector<std::string>& elems, std::vector<FormulaOperators>& operators);
-    std::shared_ptr<IComputer> computer;
+    std::shared_ptr<IFormulaComputer> computer;
 };
 
 // "=+++"

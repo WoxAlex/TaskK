@@ -1,17 +1,17 @@
-#include "simplecomputer.h"
+#include "simpleformulacomputer.h"
 
 #include "formulacell.h"
 #include "emptycell.h"
 #include "errorcell.h"
 #include "iostream"
 
-SimpleComputer::SimpleComputer(std::shared_ptr<ICellStorage> storage, int max_depth)
-    :storage(storage),
+SimpleFormulaComputer::SimpleFormulaComputer(ICellStorage& table, int max_depth)
+    :table(table),
       depth(max_depth)
 {
 }
 
-std::shared_ptr<ICell> SimpleComputer::CompMe(FormulaCell &f, int recurdive_depth)
+std::shared_ptr<ICell> SimpleFormulaComputer::CompMe(FormulaCell &f, int recurdive_depth)
 {
     if (recurdive_depth > this->depth)
         throw MaxRecurciveDepthException();
@@ -35,11 +35,11 @@ std::shared_ptr<ICell> SimpleComputer::CompMe(FormulaCell &f, int recurdive_dept
         int x,y;
         try
         {
-            out = this->storage->GetCell(f.arguments[0],x,y);
+            out = this->table.GetCell(f.arguments[0],x,y);
             if(out->getAccessType() != Computed)
             {
                 out = out->ComputeResult(recurdive_depth+1);
-                this->storage->SetCell(x,y,out);
+                this->table.SetCell(x,y,out);
             }
         }
         catch(std::logic_error& e)
@@ -74,11 +74,11 @@ std::shared_ptr<ICell> SimpleComputer::CompMe(FormulaCell &f, int recurdive_dept
             int x,y;
             try
             {
-                next = this->storage->GetCell(f.arguments[i],x,y);
+                next = this->table.GetCell(f.arguments[i],x,y);
                 if(next->getAccessType() != Computed)
                 {
                     next = next->ComputeResult(recurdive_depth+1);
-                    this->storage->SetCell(x,y,next);
+                    this->table.SetCell(x,y,next);
                 }
             }
             catch(std::logic_error& e)

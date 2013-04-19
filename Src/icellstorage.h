@@ -18,12 +18,13 @@ public:
     ICellStorage();
     virtual void CreateTable(int w, int h) =0;
 
-    virtual int GetHeight() = 0;
-    virtual int GetWidth() = 0;
+    virtual int GetHeight() const = 0;
+    virtual int GetWidth() const = 0;
 
     virtual std::shared_ptr<ICell> GetCell(int x, int y) const =0;
     virtual std::shared_ptr<ICell> GetCell(const std::string& Name, int& x, int& y) const =0;
     virtual void SetCell(int x, int y, std::shared_ptr<ICell> cell) =0;
+    virtual ~ICellStorage();
 
 };
 

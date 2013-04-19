@@ -1,5 +1,5 @@
-#ifndef ICOMPUTER_H
-#define ICOMPUTER_H
+#ifndef IFORMULACOMPUTER_H
+#define IFORMULACOMPUTER_H
 
 #include <exception>
 #include <memory>
@@ -20,11 +20,13 @@ private:
 
 class FormulaCell;
 class ICell;
-class IComputer
+class IFormulaComputer
 {
 public:
-    IComputer();
+    IFormulaComputer();
     virtual std::shared_ptr<ICell> CompMe(FormulaCell& formula, int recurdive_depth) = 0;
+    virtual ~IFormulaComputer();
+
 };
 
-#endif // ICOMPUTER_H
+#endif // IFORMULACOMPUTER_H

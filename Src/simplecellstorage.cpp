@@ -25,12 +25,12 @@ void SimpleCellStorage::CreateTable(int w, int h)
 
 }
 
-int SimpleCellStorage::GetHeight()
+int SimpleCellStorage::GetHeight() const 
 {
     return this->height;
 }
 
-int SimpleCellStorage::GetWidth()
+int SimpleCellStorage::GetWidth() const
 {
     return this->width;
 }

@@ -1,7 +1,11 @@
-#include "icomputer.h"
+#include "iformulacomputer.h"
 
-IComputer::IComputer()
+IFormulaComputer::IFormulaComputer()
 {
+}
+IFormulaComputer::~IFormulaComputer()
+{
+    
 }
 
 

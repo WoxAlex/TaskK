@@ -4,18 +4,18 @@ TableWriter::TableWriter()
 {
 }
 
-void TableWriter::PrintTable(int width, int height, const std::shared_ptr<ICellStorage> &storage)
+void TableWriter::PrintTable(const ICellStorage &table)
 {
 
-    for(int y = 0; y<height; ++y)
+    for(int y = 0; y<table.GetHeight(); ++y)
     {
         if (y > 0)
             std::cout << std::endl;
-        for(int x = 0; x<width; ++x)
+        for(int x = 0; x<table.GetWidth(); ++x)
         {
             if (x > 0)
                 std::cout << "\t";
-            std::cout << storage->GetCell(x,y)->PrintToString();
+            std::cout << table.GetCell(x,y)->PrintToString();
 
         }
     }
