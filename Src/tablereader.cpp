@@ -77,7 +77,7 @@ void TableReader::ReadTable(ICellStorage& table)
 
     issw >> width;
     if(!issw.eof() || width < 0||
-            (elems[1].length()>0 && ((elems[1][0] <= '0') || (elems[1][0] > '9'))))
+            (elems[1].length()>1 && ((elems[1][0] <= '0') || (elems[1][0] > '9'))))
         throw std::logic_error("Incorrect table size");
 
     table.CreateTable(width,  height);
