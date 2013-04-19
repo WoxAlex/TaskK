@@ -50,7 +50,7 @@ CellAccess ICell::getAccessType()
 //    this->result = res;
 //}
 
-BinaryData &operator >>(BinaryData &data, ICell *&cell)
+BinaryData &operator >>(BinaryData &data, std::shared_ptr<ICell>& cell)
 {
     CellTypes celltype;
     CellAccess cellaccess;
@@ -122,15 +122,15 @@ void ICell::setCellAccess(const CellAccess &type)
     this->cellaccess = type;
 }
 
-ICell *ICell::CellFactureMethod(const std::string & str)
+std::shared_ptr<ICell> ICell::CellFactureMethod(const std::string & str)
 {
-    ICell* out;
+    std::shared_ptr<ICell> out;
     switch(ICell::GetCellType(str))
     {
-        case String: out = new StringCell(); break;
-        case Int: out = new IntCell(); break;
-        case Formula: out = new FormulaCell(ICell::formulacomputer); break;
-        case Empty: out = new EmptyCell(); break;
+        case String: out = std::shared_ptr<StringCell>(new StringCell()); break;
+        case Int: out = std::shared_ptr<IntCell>( new IntCell()); break;
+        case Formula: out = std::shared_ptr<FormulaCell> (new FormulaCell(ICell::formulacomputer)); break;
+        case Empty: out = std::shared_ptr<EmptyCell>(new EmptyCell()); break;
         default: throw std::logic_error("Unknown cell type");
     }
     out->LoadFromString(str);
@@ -150,16 +150,16 @@ CellTypes ICell::GetCellType(const std::string &str)
     return CellIdx;
 }
 
-ICell *ICell::CellFactureMethod(const CellTypes &id)
+std::shared_ptr<ICell> ICell::CellFactureMethod(const CellTypes &id)
 {
     switch(id)
     {
-    case String: return new StringCell();
-    case Int: return new IntCell();
-    case Formula: return new FormulaCell(ICell::formulacomputer);
-    case Empty: return new EmptyCell();
-    case NullCell: return NULL;
-    case Error: return new ErrorCell();
+    case String: return std::shared_ptr<StringCell>(new StringCell());
+    case Int: return std::shared_ptr<IntCell>( new IntCell());
+    case Formula: return std::shared_ptr<FormulaCell>( new FormulaCell(ICell::formulacomputer));
+    case Empty: return std::shared_ptr<EmptyCell> (new EmptyCell());
+    case NullCell: return std::shared_ptr<ICell> (NULL);
+    case Error: return std::shared_ptr<ErrorCell> (new ErrorCell());
     default: throw std::logic_error("Unknown cell type");
     }
 

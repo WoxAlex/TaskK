@@ -8,7 +8,13 @@ class MaxRecurciveDepthException: public std::exception
 {
 public:
     MaxRecurciveDepthException();
+    MaxRecurciveDepthException(int x, int y);
     const char* what();
+    std::pair<int,int> GetLastPos();
+    bool isSetted();
+private:
+    int x,y;
+    bool setted;
 };
 
 

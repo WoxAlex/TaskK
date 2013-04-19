@@ -77,7 +77,7 @@ void TableReader::ReadTable()
 
         for(size_t x = 0; x<elems.size(); ++x)
         {
-            storage->SetCell(x,y,std::shared_ptr<ICell>(ICell::CellFactureMethod(elems[x])));
+            storage->SetCell(x,y,ICell::CellFactureMethod(elems[x]));
         }
     }
     delete[] buffer;

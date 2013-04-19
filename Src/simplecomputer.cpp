@@ -32,9 +32,9 @@ std::shared_ptr<ICell> SimpleComputer::CompMe(FormulaCell &f, int recurdive_dept
 
     if(ICell::GetCellType(f.arguments[0]) == CellIdx)
     {
+        int x,y;
         try
         {
-            int x,y;
             out = this->storage->GetCell(f.arguments[0],x,y);
             if(out->getAccessType() != Computed)
             {
@@ -54,9 +54,15 @@ std::shared_ptr<ICell> SimpleComputer::CompMe(FormulaCell &f, int recurdive_dept
                 else
                 throw e;
         }
+        catch(MaxRecurciveDepthException& ex)
+        {
+            if(!ex.isSetted())
+                throw MaxRecurciveDepthException(x,y);
+            throw ex;
+        }
     }else
     {
-        out = std::shared_ptr<ICell>(ICell::CellFactureMethod(f.arguments[0]));
+        out = ICell::CellFactureMethod(f.arguments[0]);
 
     }
 
@@ -64,9 +70,10 @@ std::shared_ptr<ICell> SimpleComputer::CompMe(FormulaCell &f, int recurdive_dept
     {
         if(ICell::GetCellType(f.arguments[i]) == CellIdx)
         {
+
+            int x,y;
             try
             {
-                int x,y;
                 next = this->storage->GetCell(f.arguments[i],x,y);
                 if(next->getAccessType() != Computed)
                 {
@@ -86,9 +93,15 @@ std::shared_ptr<ICell> SimpleComputer::CompMe(FormulaCell &f, int recurdive_dept
                     else
                     throw e;
             }
+            catch(MaxRecurciveDepthException& ex)
+            {
+                if(!ex.isSetted())
+                    throw MaxRecurciveDepthException(x,y);
+                throw ex;
+            }
         }else
         {
-            next = std::shared_ptr<ICell>(ICell::CellFactureMethod(f.arguments[i]));
+            next = ICell::CellFactureMethod(f.arguments[i]);
         }
         if(next->getAccessType() == Computing)
             out = std::shared_ptr<ICell>(new ErrorCell("Cycle in formula"));

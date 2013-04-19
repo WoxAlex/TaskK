@@ -47,7 +47,7 @@ public:
 
     //void SetResultPtr(std::shared_ptr<ICell>);
 
-    friend BinaryData & operator >>(BinaryData &data, ICell *& cell);
+    friend BinaryData & operator >>(BinaryData &data, std::shared_ptr<ICell>& cell);
 
     friend BinaryData & operator <<(BinaryData &data, ICell & cell);
 
@@ -63,8 +63,8 @@ public:
     static void SetFormulaComputer(std::shared_ptr<IComputer>& comp);
 
     static CellTypes GetCellType(const std::string& str);
-    static ICell* CellFactureMethod(const std::string& str);
-    static ICell* CellFactureMethod(const CellTypes& id);
+    static std::shared_ptr<ICell> CellFactureMethod(const std::string& str);
+    static std::shared_ptr<ICell> CellFactureMethod(const CellTypes& id);
 protected:
     void setCellType(const CellTypes& type);
     void setCellAccess(const CellAccess& type);
