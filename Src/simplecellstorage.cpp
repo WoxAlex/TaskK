@@ -57,23 +57,24 @@ std::shared_ptr<ICell> SimpleCellStorage::GetCell(const std::string& Name, int& 
     //2 - digit
     int state = 0;
 
-    int x_coeff = 1;
-    int y_coeff = 1;
-
     //std::cout << "\"" << Name << "\"" << std::endl;
     for(size_t i = 0; i<tmp.length(); ++i)
     {
-        if((tmp[i]>= '0') && (tmp[i]<='9') && (state>0))
+        if((tmp[i]>= '0') && (tmp[i]<='9') && (state==2))
         {
-            y = y*y_coeff + (tmp[i] - '0');
-            y_coeff *= 10;
+            y = y * 10 + (tmp[i] - '0');
+            state = 2;
+            continue;
+        }
+        if((tmp[i]>= '1') && (tmp[i]<='9') && (state==1))
+        {
+            y = y * 10 + (tmp[i] - '0');
             state = 2;
             continue;
         }
         if((tmp[i]>= 'A') && (tmp[i]<='Z') && (state<2))
         {
-            x = x*x_coeff + (tmp[i] - 'A');
-            x_coeff *= 10;
+            x = x * 26 + (tmp[i] - 'A' + 1);
             state = 1;
             continue;
         }
@@ -82,6 +83,9 @@ std::shared_ptr<ICell> SimpleCellStorage::GetCell(const std::string& Name, int& 
 
     if (state != 2)
         throw std::logic_error("Error in cell name");
+
+    --y;
+    --x;
     //a == A : y
     //1 : x
     //std::cout << Name << " " <<tmp << " " << x << " " << y << std::endl;
