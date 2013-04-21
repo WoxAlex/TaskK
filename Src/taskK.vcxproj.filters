@@ -1,0 +1,123 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="simplecellstorage.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="simpleformulacomputer.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="simpletablecomputer.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="stringcell.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="tablereader.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="tablewriter.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="binarydata.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="emptycell.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="errorcell.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="formulacell.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="icell.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="icellstorage.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="iformulacomputer.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="intcell.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="itablecomputer.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="itablereader.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="optimizedtablecomputer.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="simpleformulacomputer.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="simpletablecomputer.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="stringcell.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="tablereader.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="tablewriter.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="binarydata.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="emptycell.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="errorcell.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="formulacell.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="icell.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="icellstorage.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="iformulacomputer.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="intcell.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="itablereader.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="main.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="optimizedtablecomputer.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="simplecellstorage.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+</Project>

@@ -90,7 +90,7 @@ try
     return 0;
 } catch (std::exception& e)
 {
-    std::cerr  << e.what() << std::endl;
+    std::cerr  << "Error" << std::endl;//e.what() << ;
     return 1;
 }
 
